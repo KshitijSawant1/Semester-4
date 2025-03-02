@@ -1,0 +1,17 @@
+DIJKSTRA(Graph, source):
+1. Initialize:
+   - dist[source] = 0
+   - dist[v] = ∞ for all other vertices
+   - prev[v] = None for all vertices
+   - Add all vertices to a priority queue (Q)
+
+2. While Q is not empty:
+   - u = vertex with minimum dist[u]
+   - Remove u from Q
+   - For each neighbor v of u:
+     - alt = dist[u] + weight(u, v)
+     - If alt < dist[v]:
+         - dist[v] = alt
+         - prev[v] = u
+         
+3. Return dist[], prev[]

@@ -1,0 +1,151 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eef2f3;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    padding: 25px;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 550px;
+    transition: 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-3px);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Paragraph */
+p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* Buttons */
+button {
+    padding: 12px 18px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+#changeTextBtn {
+    background-color: #007bff;
+    color: white;
+}
+
+#changeColorBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+#toggleVisibilityBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Hidden class for visibility toggle */
+.hidden {
+    display: none;
+}
+
+/* Form Styling */
+form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin: 8px 0 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border 0.2s ease-in-out;
+}
+
+form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#userForm button {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+#userForm button:hover {
+    background-color: #0056b3;
+}
+
+#errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Counter Section */
+#counterDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

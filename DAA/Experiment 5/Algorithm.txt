@@ -1,0 +1,22 @@
+Algorithm Kruskal (E, cost, n, t)
+//E is the set of edges in G. G has n vertices cost (u, v) is the cost of edge (u , v) t is 
+//The set of edges in the minimum cost spanning tree and mincost is the cost. The //final cost is returned.
+{
+	Construct the heap out of the edges cost using Heapify;
+	for i:=1 to n do Parent🡨-1 
+    //Each vertex is in the different set 
+	i🡨 mincost🡨 0;
+	While (i < n -1) and (heap not empty) do
+	{	
+        delete a minimum cost edge (u,v) from the heap and reheapify using ADJUST;
+        J🡨FIND (u); k🡨FIND (v); 
+        If j ≠ k then i🡨i+1
+        {	T(i, 1) 🡨 u; T (i,2) 🡨v;
+            Mincost 🡨 mincost + cost(u,v);
+            union (j, k);
+        }
+
+    }
+    if (i ≠ n-1) then write(“no spanning tree”);
+    else return minsort;
+}

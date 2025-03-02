@@ -1,0 +1,15 @@
+.app-container {
+  display: flex;
+}
+
+/* Adjust Content Margin based on Sidebar State */
+.content {
+  margin-left: 60px; /* Small margin when sidebar is collapsed */
+  padding: 20px;
+  width: 100%;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.open ~ .content {
+  margin-left: 260px; /* Expand when sidebar opens */
+}

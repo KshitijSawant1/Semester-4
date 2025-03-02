@@ -1,0 +1,11 @@
+BINARY_SEARCH(A, key, low, high)
+1. If low > high:
+       return -1 (Element not found)
+2. Else:
+       mid = (low + high) / 2
+3. If A[mid] == key:
+       return mid (Element found)
+4. Else if key < A[mid]:
+       return BINARY_SEARCH(A, key, low, mid - 1) (Search in the left half)
+5. Else:
+       return BINARY_SEARCH(A, key, mid + 1, high) (Search in the right half)

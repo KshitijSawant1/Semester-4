@@ -1,0 +1,15 @@
+QUICKSORT(A, start, end)
+1. If start < end:
+     a. p = PARTITION(A, start, end)
+     b. QUICKSORT(A, start, p-1)
+     c. QUICKSORT(A, p+1, end)
+
+PARTITION(A, start, end)
+1. Select pivot = A[end]
+2. i = start - 1
+3. for j = start to end - 1:
+     a. If A[j] < pivot:
+        i = i + 1
+        Swap A[i] with A[j]
+4. Swap A[i+1] with A[end]
+5. Return i + 1

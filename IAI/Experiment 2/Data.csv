@@ -1,0 +1,11 @@
+ID,Name,Age,Income,City
+101,John,25.0,50000.0,New York
+102,Mary,30.0,,Chicago
+103,John,25.0,50000.0,New York
+104,Kate,,60000.0,San Diego
+105,Mike,35.0,70000.0,Houston
+106,Sarah,28.0,65000.0,Boston
+107,David,40.0,72000.0,Seattle
+108,Emma,,,Miami
+109,Robert,33.0,54000.0,Denver
+110,Sophia,29.0,58000.0,Austin

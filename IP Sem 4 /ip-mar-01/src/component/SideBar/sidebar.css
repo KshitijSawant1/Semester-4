@@ -1,0 +1,49 @@
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 60px; /* Adjust height to avoid overlap with Navbar */
+    width: 250px;
+    height: 100vh;
+    background-color: #007bff;
+    transition: left 0.3s ease-in-out;
+    padding-top: 20px;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Toggle Button */
+  .sidebar-toggle {
+    position: fixed;
+    left: 20px;
+    top: 15px; /* Adjusted for Navbar */
+    cursor: pointer;
+    color: #007bff;
+    font-size: 24px;
+    z-index: 1000;
+  }
+  
