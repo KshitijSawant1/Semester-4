@@ -1,0 +1,15 @@
+function BellmanFord(Graph, Source):
+    Initialize dist[] to ∞, except dist[Source] = 0
+    Initialize prev[] to NULL
+
+    For i from 1 to V-1:
+        For each edge (u, v, weight) in Graph:
+            If dist[u] + weight < dist[v]:
+                dist[v] = dist[u] + weight
+                prev[v] = u
+
+    For each edge (u, v, weight):
+        If dist[u] + weight < dist[v]:
+            Report "Negative Weight Cycle Exists"
+
+    Return dist[], prev[]
