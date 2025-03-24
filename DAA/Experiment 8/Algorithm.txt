@@ -1,0 +1,11 @@
+function solveNQueens(board, col):
+    if col >= N:
+        return True
+
+    for row from 0 to N-1:
+        if isSafe(board, row, col):
+            board[row][col] = 1
+            if solveNQueens(board, col + 1):
+                return True
+            board[row][col] = 0  // backtrack
+    return False
