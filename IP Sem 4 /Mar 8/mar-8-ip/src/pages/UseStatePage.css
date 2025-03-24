@@ -1,0 +1,30 @@
+.interactive-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .font-size-section,
+  .countdown-section {
+    margin-bottom: 30px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  

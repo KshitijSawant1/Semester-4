@@ -1,0 +1,20 @@
+.profile-card {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    margin: 20px auto;
+    border: 2px solid #007bff;
+  }
+  
+  .profile-card h2 {
+    color: #007bff;
+  }
+  
+  .profile-card p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  

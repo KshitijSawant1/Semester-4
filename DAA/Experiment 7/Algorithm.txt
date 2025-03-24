@@ -1,0 +1,18 @@
+function LCSLength(X[1..m], Y[1..n])
+    Create a 2D array C[0..m][0..n]  // To store LCS lengths
+
+    // Initialize base cases
+    for i := 0 to m do
+        C[i][0] := 0
+    for j := 0 to n do
+        C[0][j] := 0
+
+    // Fill the table in row-major order
+    for i := 1 to m do
+        for j := 1 to n do
+            if X[i] == Y[j] then
+                C[i][j] := C[i-1][j-1] + 1
+            else
+                C[i][j] := max(C[i-1][j], C[i][j-1])
+
+    return C[m][n]  // Length of LCS
