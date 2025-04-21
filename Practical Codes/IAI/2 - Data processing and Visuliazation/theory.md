@@ -1,114 +1,206 @@
-Let's break down the code **line by line**, along with the purpose of each operation. This script works with **student classification data** and performs operations like merging, sorting, pivoting, and indexing using the **Pandas library**.
+Here's a **detailed line-by-line explanation** of the Python code you've provided, which performs **data analysis and visualization** using `pandas`, `matplotlib`, and `seaborn`.
 
 ---
 
-### 📦 **1. Importing Pandas Library**
+## 🧠 Objective:
+
+To clean and visualize a dataset (`Data.csv`) by:
+
+- Checking for missing values
+- Filling missing data
+- Detecting duplicates
+- Displaying heatmaps before and after cleaning
+
+---
+
+## 🔍 Code Explanation
+
+```python
+# Library Installation (uncomment if needed)
+# !pip install pandas matplotlib seaborn
+```
+
+- If these libraries are not already installed, you can uncomment and run this line in a notebook or terminal.
+
+---
+
 ```python
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
-- This imports the `pandas` library with the alias `pd`, which is used for data manipulation and analysis.
+
+- Imports libraries:
+  - `pandas` for data manipulation.
+  - `matplotlib.pyplot` and `seaborn` for plotting heatmaps.
 
 ---
 
-### 📥 **2. Load the Student Classification Dataset**
 ```python
-student_data = pd.read_csv('Practical Codes/IAI/3 - Pandas Library/Data.csv')
+# File Path (change as per your environment)
+file_path = "IAI/Experiment 2/Data.csv"
 ```
-- Loads the `Data.csv` file into a Pandas DataFrame named `student_data`.
-- This CSV includes student details like:
-  - `Id`, `Student_Age`, `Sex`, `High_School_Type`, `Scholarship`, `Attendance`, `Grade`, etc.
 
-#### ✅ Example CSV Content
-| Id   | Student_Age | Sex  | High_School_Type | ... | Grade |
-|------|--------------|------|------------------|-----|--------|
-| 5001 | 21           | Male | Other            | ... | AA     |
-| 5002 | 20           | Male | Other            | ... | AA     |
+- Stores the path of your CSV file.
 
 ---
 
-### 🧪 **3. Create a Sample Exam Scores DataFrame**
 ```python
-exam_scores = pd.DataFrame({
-    'Id': [1, 2, 3, 4, 5],
-    'Exam_Score': [85, 78, 90, 88, 92]
-})
+# Load Dataset
+df = pd.read_csv(file_path)
+df_before = df.copy()  # For comparison
 ```
-- Creates a new DataFrame with student `Id` and their `Exam_Score`.
-- This DataFrame simulates another dataset you want to **merge** with the student classification data.
+
+- Reads the CSV file into a DataFrame `df`.
+- Creates a copy `df_before` to retain the **original state before cleaning**, which is useful for comparing heatmaps.
 
 ---
 
-### 🔗 **4. Merge Both Datasets on `Id`**
 ```python
-merged_data = pd.merge(student_data, exam_scores, on='Id', how='left')
+# ===============================
+# Dataset Overview
+# ===============================
+print("Dataset Info:")
+df.info()
 ```
-- Merges the `student_data` and `exam_scores` using `Id` as the key.
-- `how='left'`: All rows from `student_data` are preserved, and exam scores are joined where matching `Id` exists.
-- If `Id` doesn't match, `Exam_Score` will be `NaN`.
 
-```python
-print("\nMerged Dataset:\n", merged_data.head())
-```
-- Displays the first 5 rows of the merged dataset.
+- Prints info like:
+  - Column names
+  - Non-null counts
+  - Data types
+  - Memory usage
 
 ---
 
-### 🔢 **5. Sort by Exam Score (Descending)**
 ```python
-sorted_data = merged_data.sort_values(by='Exam_Score', ascending=False)
+print("\nFirst 5 Rows:")
+print(df.head())
 ```
-- Sorts `merged_data` so that students with the **highest `Exam_Score`** appear first.
 
-```python
-print("\nSorted by Exam Score:\n", sorted_data)
-```
-- Displays the sorted data.
+- Displays the **first 5 records** of the dataset.
 
 ---
 
-### 📊 **6. Create a Pivot Table**
 ```python
-pivot_table = merged_data.pivot_table(
-    values='Exam_Score', index='High_School_Type', aggfunc='mean'
-)
+# ===============================
+# Null Values - Before Handling
+# ===============================
+print("\nMissing Values Before Handling:")
+print(df_before.isnull().sum())
 ```
-- Groups data by `High_School_Type` and computes the **average Exam_Score** for each group.
-- This shows how students from different school types performed.
 
-```python
-print("\nPivot Table - Average Exam Score by High School Type:\n", pivot_table)
-```
-- Displays the pivot table result.
+- Shows the number of **missing values per column** in the original dataset (`df_before`).
 
 ---
 
-### 🆔 **7. Indexing by Student Id**
 ```python
-indexed_data = merged_data.set_index('Id')
+# ===============================
+# Data Cleaning
+# ===============================
+df.fillna(df.mean(numeric_only=True), inplace=True)
 ```
-- Sets the column `Id` as the **index** of the DataFrame, making it easier to look up student records by `Id`.
 
-```python
-print("\nIndexed Dataset:\n", indexed_data.head())
-```
-- Displays the top 5 rows of the indexed data.
+- Replaces missing values in **numeric columns only** (`Age`, `Income` in this case) with their **column means**.
+- Non-numeric columns like `Name` or `City` are **ignored** during this operation.
 
 ---
 
-### ✅ Summary
-| Step | Action | Purpose |
-|------|--------|---------|
-| 1 | Import Pandas | Use DataFrame features |
-| 2 | Load Data | Read student data |
-| 3 | Create Scores | Add exam scores |
-| 4 | Merge | Combine datasets |
-| 5 | Sort | Rank students by scores |
-| 6 | Pivot | Analyze scores by school type |
-| 7 | Index | Optimize access using `Id` |
+```python
+# ===============================
+# Null Values - After Handling
+# ===============================
+print("\nMissing Values After Handling:")
+print(df.isnull().sum())
+```
+
+- Prints the **remaining null values** in the cleaned DataFrame `df`.
 
 ---
 
-Let me know if you'd like:
-- A **visual representation** of the pivot table
-- A **plot** (like bar chart) of average scores
-- Handling of `NaN` in `Exam_Score` after merge
+```python
+# ===============================
+# First and Last 5 Rows (After Handling)
+# ===============================
+print("\nFirst 5 Rows After Handling:")
+print(df.head())
+
+print("\nLast 5 Rows After Handling:")
+print(df.tail())
+```
+
+- Displays the **top 5** and **bottom 5** records **after** missing value treatment.
+
+---
+
+```python
+# ===============================
+# Duplicate Detection
+# ===============================
+duplicate_rows = df[df.duplicated()]
+print("\nDuplicate Rows:")
+print(duplicate_rows)
+```
+
+- Checks for duplicate rows.
+- If any are found, they are printed.
+
+---
+
+```python
+# ===============================
+# Heatmaps: Before & After
+# ===============================
+fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+```
+
+- Creates **2 side-by-side subplots** for visual comparison.
+
+---
+
+```python
+sns.heatmap(df_before.isnull(), cmap="YlOrRd", cbar=False, linewidths=0.5, linecolor="gray", ax=axs[0])
+axs[0].set_title("Null Values Heatmap - Before Handling")
+```
+
+- Heatmap shows **missing values before** cleaning.
+- Color map: Yellow to Red (indicating severity).
+
+---
+
+```python
+sns.heatmap(df.isnull(), cmap="BuGn", cbar=False, linewidths=0.5, linecolor="gray", ax=axs[1])
+axs[1].set_title("Null Values Heatmap - After Handling")
+```
+
+- Heatmap shows **missing values after** cleaning.
+- Color map: Blue to Green (fresher/cleaner look).
+
+---
+
+```python
+plt.tight_layout()
+plt.show()
+```
+
+- Adjusts spacing and displays the two heatmaps neatly.
+
+---
+
+## 🧾 Sample `Data.csv` Record (Based on your input):
+
+| ID  | Name | Age  | Income  | City     |
+| --- | ---- | ---- | ------- | -------- |
+| 101 | John | 25.0 | 50000.0 | New York |
+
+You can expand this file with more rows, some of which may have missing values (`NaN`) in `Age` or `Income` to test the heatmap.
+
+---
+
+## ✅ Output Summary:
+
+- **Before Cleaning:** Red/yellow squares show missing values.
+- **After Cleaning:** Heatmap becomes clean (green/blue).
+- **Duplicates:** Detected (if any).
+- **Head/Tail:** Shows progress from raw to clean data.
+
+Would you like me to help generate a sample `Data.csv` with missing values and duplicates for practice?
