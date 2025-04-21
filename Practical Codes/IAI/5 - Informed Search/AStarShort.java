@@ -42,11 +42,29 @@ public class AStarShort {
     }
 
     public static void main(String[] args) {
-        addEdge(0,1,2); addEdge(0,2,4); addEdge(1,3,7);
+/*        addEdge(0,1,2); addEdge(0,2,4); addEdge(1,3,7);
         addEdge(2,3,1); addEdge(3,4,3);
         heuristic.put(0,7); heuristic.put(1,6); heuristic.put(2,2);
         heuristic.put(3,1); heuristic.put(4,0); // Goal
+ */
 
-        aStar(0, 4); // Start=0, Goal=4
+    addEdge(1, 2, 9);
+    addEdge(2, 4, 11);
+    addEdge(1, 3, 4);
+    addEdge(3, 4, 17);
+    addEdge(3, 5, 12);
+    addEdge(4, 7, 5);
+    addEdge(5, 7, 9);
+    addEdge(1, 6, 7);
+    addEdge(6, 5, 14);
+    heuristic.put(1,21);
+    heuristic.put(2,14);
+    heuristic.put(3,18);
+    heuristic.put(4,18);
+    heuristic.put(5,5);
+    heuristic.put(6,8);
+    heuristic.put(7,0);
+    
+        aStar(1, 7); // Start=0, Goal=4
     }
 }

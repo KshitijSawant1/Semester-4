@@ -1,48 +1,69 @@
+# Library Installation (uncomment if needed)
 # !pip install pandas matplotlib seaborn
 
-# Import Libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# File Path
-file_path = "Practical Codes/IAI/2 - Data processing and Visuliazation/Data.csv"
+# File Path (change as per your environment)
+file_path = "IAI/Experiment 2/Data.csv"
 
-# Read CSV File
+# Load Dataset
 df = pd.read_csv(file_path)
-
-# Make a copy for comparison
-df_before = df.copy()
+df_before = df.copy()  # For comparison
 
 # ===============================
-# Subplot: Heatmap Before & After
+# Dataset Overview
+# ===============================
+print("Dataset Info:")
+df.info()
+
+print("\nFirst 5 Rows:")
+print(df.head())
+
+# ===============================
+# Null Values - Before Handling
+# ===============================
+print("\nMissing Values Before Handling:")
+print(df_before.isnull().sum())
+
+# ===============================
+# Data Cleaning
+# ===============================
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+# ===============================
+# Null Values - After Handling
+# ===============================
+print("\nMissing Values After Handling:")
+print(df.isnull().sum())
+
+# ===============================
+# First and Last 5 Rows (After Handling)
+# ===============================
+print("\nFirst 5 Rows After Handling:")
+print(df.head())
+
+print("\nLast 5 Rows After Handling:")
+print(df.tail())
+
+# ===============================
+# Duplicate Detection
+# ===============================
+duplicate_rows = df[df.duplicated()]
+print("\nDuplicate Rows:")
+print(duplicate_rows)
+
+# ===============================
+# Heatmaps: Before & After
 # ===============================
 fig, axs = plt.subplots(1, 2, figsize=(18, 6))
 
-# Heatmap Before
 sns.heatmap(df_before.isnull(), cmap="YlOrRd", cbar=False, linewidths=0.5, linecolor="gray", ax=axs[0])
 axs[0].set_title("Null Values Heatmap - Before Handling")
 
-# Handle Missing Values
-df.fillna(df.mean(numeric_only=True), inplace=True)
-
-# Heatmap After
 sns.heatmap(df.isnull(), cmap="BuGn", cbar=False, linewidths=0.5, linecolor="gray", ax=axs[1])
 axs[1].set_title("Null Values Heatmap - After Handling")
 
 plt.tight_layout()
 plt.show()
-
-# ===============================
-# Dataset Analysis
-# ===============================
-print("\nMissing Values Before Handling:")
-print(df_before.isnull().sum())
-
-print("\nMissing Values After Handling:")
-print(df.isnull().sum())
-
-# Optional: Check Duplicates
-duplicate_rows = df[df.duplicated()]
-print("\nDuplicate Rows:")
-print(duplicate_rows)

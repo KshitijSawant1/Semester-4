@@ -44,11 +44,21 @@ public class UCS_Short {
     }
 
     public static void main(String[] args) {
-        addEdge(0, 1, 2);
+   /*      addEdge(0, 1, 2);
         addEdge(0, 2, 4);
         addEdge(1, 3, 7);
         addEdge(2, 3, 1);
-        addEdge(3, 4, 3);
+        addEdge(3, 4, 3);*/
+
+        addEdge(3,1,2);
+        addEdge(4,1,1);
+        addEdge(2,1,2);
+        addEdge(6,2,5);
+        addEdge(5,3,1);
+        addEdge(5,4,3);
+        addEdge(7,5,1);
+        addEdge(7,6,4);
+        
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Start Node: ");
