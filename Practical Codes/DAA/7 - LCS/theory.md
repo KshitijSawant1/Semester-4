@@ -1,4 +1,3 @@
----
 
 ## 🔍 Function Definition
 

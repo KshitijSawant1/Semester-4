@@ -1,7 +1,3 @@
-Absolutely, Kshitij! Let’s walk through this **Kruskal’s Minimum Spanning Tree (MST)** Python code **line by line**, so you understand the **logic, flow, and data structures** being used.
-
----
-
 ## 🧱 CLASS: Disjoint Set Union (Union-Find)
 ```python
 class DisjointSet:

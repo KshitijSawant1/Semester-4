@@ -1,5 +1,3 @@
----
-
 ## ✅ Function: `bellman_ford(vertices, edges, start)`
 ```python
 def bellman_ford(vertices, edges, start):

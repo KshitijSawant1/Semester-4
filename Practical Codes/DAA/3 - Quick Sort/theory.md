@@ -1,5 +1,3 @@
----
-
 ### 🔹 Quick Sort Function
 
 ```python

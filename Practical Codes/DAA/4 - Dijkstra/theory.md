@@ -1,5 +1,3 @@
----
-
 ### 🔹 Importing Required Module
 
 ```python
