@@ -199,5 +199,37 @@ A → B = 3
 A → C = 1
 A → D = 4
 ```
+---
+
+### ✅ **Dijkstra’s Algorithm Analysis Table**
+
+| **Aspect**            | **Complexity**                         | **Reason / Explanation**                                                                                         |
+|-----------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Best Case (Min-Heap + Adjacency List)**   | **O((V + E) log V)**             | Using a **priority queue (min-heap)** for extracting min distance and **adjacency list** for edges.               |
+| **Average Case**       | **O((V + E) log V)**             | Most practical scenarios with heap and adjacency list fall into this performance.                                 |
+| **Worst Case (Adjacency Matrix + No Heap)** | **O(V²)**                         | When using an **adjacency matrix** and linear search for min distance (no priority queue).                         |
+| **Space Complexity**   | **O(V + E)** or **O(V²)**              | Depends on graph representation:<br>**O(V + E)** for adjacency list,<br>**O(V²)** for adjacency matrix.            |
 
 ---
+
+### 🔍 Explanation of Each Case:
+
+#### 🔹 **Best & Average Case** (with Min-Heap + Adjacency List)
+- Extracting minimum: `log V` using priority queue (heap)
+- Relaxing edges: happens `E` times (each edge considered once)
+- Total time: **O((V + E) log V)**
+
+#### 🔹 **Worst Case** (with Adjacency Matrix + No Heap)
+- Finding minimum unvisited vertex takes `O(V)` time (linear scan)
+- Done for every vertex → total **O(V²)**
+
+#### 🔹 **Space Complexity**
+- **O(V)** to store distance array, visited set, and priority queue
+- **O(E)** for adjacency list (space-efficient)
+- **O(V²)** for adjacency matrix (space-heavy)
+
+---
+
+### 🧾 Notation:
+- `V` = Number of vertices
+- `E` = Number of edges

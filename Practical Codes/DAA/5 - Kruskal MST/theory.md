@@ -158,3 +158,68 @@ C -- D == 4
 - **Kruskal’s Algorithm** is a **greedy** algorithm: always picks the smallest-weight edge that doesn't form a cycle.
 - **Disjoint Set Union (Union-Find)** helps track whether adding an edge would form a cycle.
 - The final MST connects all vertices with the **minimum total edge weight** and **no cycles**.
+---
+
+### ✅ **Kruskal’s Algorithm Analysis Table**
+
+| **Aspect**        | **Complexity**             | **Reason / Explanation**                                                                                   |
+|------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Best Case**     | **O(E log E)**              | When the graph is already connected with minimal edge processing. Sorting dominates; few unions are done.   |
+| **Average Case**  | **O(E log E)**              | Sorting of edges dominates, and Union-Find handles near-linear edge connection efficiently.                |
+| **Worst Case**    | **O(E log E)**              | All edges are considered, and Union-Find still handles efficiently using path compression and union by rank.|
+| **Space Complexity** | **O(V + E)**          | Stores: sorted edge list (E), parent array (V), rank array (V), and MST result (up to V−1 edges).           |
+
+---
+
+### 🔍 Explanation:
+
+#### 🔹 Time Complexity:
+
+- **Sorting Edges** takes `O(E log E)` — this is always done regardless of graph connectivity.
+- **Union-Find operations** for each edge are nearly **O(1)** on average (amortized) with **path compression + union by rank**.
+- So overall time is **dominated by edge sorting**: **O(E log E)** in all cases.
+
+> **Note:** Since `E` can be up to `V²`, the worst-case time becomes `O(E log V²)` = `O(E log V)` using the fact that `log E ≈ log V² = 2 log V`.
+
+#### 🔹 Space Complexity:
+
+- **O(E)** for storing and sorting edges
+- **O(V)** for:
+  - `parent[]` array (Disjoint Set)
+  - `rank[]` array (for efficient union)
+  - `MST[]` result storage
+
+So, total is **O(V + E)**.
+
+---
+
+### ✅ **Kruskal’s vs Prim’s Algorithm – Detailed Comparison**
+
+| **Criteria**                 | **Kruskal’s Algorithm**                       | **Prim’s Algorithm**                                 |
+|-----------------------------|-----------------------------------------------|-------------------------------------------------------|
+| **Approach**                | Greedy; picks the **smallest edge** that doesn’t form a cycle | Greedy; grows the MST from a **starting vertex**       |
+| **Data Structures Used**    | Disjoint Set (Union-Find)                     | Min-Heap / Priority Queue, Adjacency List or Matrix   |
+| **Graph Representation**    | Works better with **Edge List**               | Works better with **Adjacency List or Matrix**        |
+| **Time Complexity**         | O(E log E)                                    | O(E + V log V) with Min-Heap and Adjacency List       |
+| **Space Complexity**        | O(V + E)                                      | O(V + E)                                               |
+| **Best For**                | **Sparse graphs**                             | **Dense graphs**                                      |
+| **Cycle Detection**         | Yes, uses **Union-Find** to detect cycles     | No need; edges chosen from already visited nodes      |
+| **Edge Selection Strategy** | Global – considers all edges                  | Local – always chooses the closest node to MST        |
+| **Starting Node Required?** | **No**                                        | **Yes** – needs a starting vertex                     |
+| **MST Output**              | May be disconnected if graph is disconnected  | Always connected if the graph is connected            |
+
+---
+
+### 🧠 Quick Takeaways:
+
+- **Kruskal's** is better when:
+  - You already have an **edge list**
+  - The graph is **sparse**
+  - You want to understand **cycle detection via Union-Find**
+
+- **Prim's** is better when:
+  - You work with **dense graphs**
+  - You already have **adjacency list/matrix**
+  - You want to **grow the MST node by node**
+
+---

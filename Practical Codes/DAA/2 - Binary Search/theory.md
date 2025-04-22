@@ -150,3 +150,27 @@ Otherwise, inform the user that the element doesn't exist in the array.
 - The list is sorted using **Bubble Sort**.
 - A **Binary Search** is then performed on the sorted list.
 - Final output shows whether the target was found and where.
+---
+
+### ✅ **Binary Search Analysis Table**
+
+| **Aspect**      | **Complexity**         | **Reason / Explanation**                                                                 |
+|------------------|-------------------------|--------------------------------------------------------------------------------------------|
+| **Best Case**    | **O(1)**                | Occurs when the target element is at the **middle** of the array in the first comparison. |
+| **Average Case** | **O(log n)**            | On average, the search space is halved each time, leading to logarithmic comparisons.     |
+| **Worst Case**   | **O(log n)**            | When the element is **not found**, or is at one end, the array is halved until 1 element. |
+| **Space (Iterative)** | **O(1)**         | Only a few variables (`low`, `high`, `mid`) are used; no extra space.                     |
+| **Space (Recursive)** | **O(log n)**     | Each recursive call adds to the call stack (height of recursion tree is log n).           |
+
+---
+
+### 🔍 Key Notes:
+
+- **Time Complexity (log n)** arises because Binary Search **divides the search interval by 2** each time.
+  - For an array of size `n`, the maximum number of divisions is `log₂(n)`.
+- **Best case O(1)**: if the target is found in the first comparison.
+- **Space Complexity**
+  - **Iterative** version is space-efficient (**O(1)**).
+  - **Recursive** version uses additional memory for the **call stack**, hence **O(log n)**.
+
+---

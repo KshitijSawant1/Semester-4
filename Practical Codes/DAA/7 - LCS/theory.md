@@ -184,3 +184,49 @@ LCS: GTAB
 ```
 
 ---
+
+### ✅ **LCS (Longest Common Subsequence) Analysis Table**
+
+| **Aspect**         | **Complexity**         | **Reason / Explanation**                                                                 |
+|--------------------|------------------------|--------------------------------------------------------------------------------------------|
+| **Best Case**       | **O(m × n)**           | All characters match or mismatch must be checked; DP always fills the table regardless.   |
+| **Average Case**    | **O(m × n)**           | The algorithm fills an `m × n` table regardless of string similarity.                     |
+| **Worst Case**      | **O(m × n)**           | Strings have no common subsequence (all mismatches), so full table must be filled.        |
+| **Space Complexity (Full Table)** | **O(m × n)** | Stores a DP table of size `(m+1) × (n+1)` to keep track of subproblem results.             |
+| **Space Optimized (1D)**          | **O(min(m, n))** | Only two rows/columns needed at a time; applicable when just LCS length is required.     |
+
+---
+
+### 🔍 Explanation:
+
+#### 🔹 Time Complexity:
+
+- LCS is solved by **building a DP table** of size `(m+1) × (n+1)` where:
+  - `m = length of string X`
+  - `n = length of string Y`
+- Each cell requires constant time to compute → Total time = **O(m × n)** in **all cases**.
+
+There is **no variation** between best, average, and worst cases in terms of time, because the **entire table is always filled**.
+
+---
+
+#### 🔹 Space Complexity:
+
+- **Standard DP**: Stores the full table → **O(m × n)**
+- **Optimized**: If we only care about the LCS **length**, we can use **two 1D arrays** → **O(min(m, n))**
+
+But if reconstructing the actual sequence, we need the full table.
+
+---
+
+### ✅ Summary Table
+
+| **Metric**         | **Complexity**     | **Explanation**                                                                   |
+|--------------------|--------------------|------------------------------------------------------------------------------------|
+| **Time (Best)**     | O(m × n)           | Full table filled regardless of input                                             |
+| **Time (Average)**  | O(m × n)           | Always builds table based on both string lengths                                  |
+| **Time (Worst)**    | O(m × n)           | All characters mismatch → no shortcuts in table filling                           |
+| **Space (Standard)**| O(m × n)           | Full DP table needed for length + reconstruction                                  |
+| **Space (Optimized)**| O(min(m, n))      | When only LCS **length** is needed, not the sequence itself                      |
+
+---

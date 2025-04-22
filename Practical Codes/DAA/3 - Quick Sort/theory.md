@@ -134,3 +134,32 @@ Prints the final sorted result.
 - ✅ This is a **recursive** Quick Sort.
 - ✅ It creates **new lists** instead of sorting in-place.
 - ✅ It shows the power of Python’s **list comprehensions** and **recursion**.
+
+---
+
+### ✅ **Quick Sort Analysis Table**
+
+| **Aspect**        | **Complexity**        | **Reason / Explanation**                                                                                  |
+|------------------|------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Best Case**     | **O(n log n)**         | Occurs when the pivot divides the array into two **equal halves** at each step. Balanced recursion.         |
+| **Average Case**  | **O(n log n)**         | On average, pivot divides the array reasonably well. Recursive tree has height log n, with n comparisons.   |
+| **Worst Case**    | **O(n²)**              | Happens when pivot is the **smallest or largest** element each time (highly unbalanced splits).             |
+| **Space (In-place)**  | **O(log n)**     | Only log n stack frames needed in ideal cases due to recursive calls. No extra array used for sorting.      |
+| **Space (Unbalanced Recursion)** | **O(n)** | Worst case recursion depth (like in sorted/reverse arrays) may cause n recursive calls.                    |
+
+---
+
+### 🔍 Explanation Breakdown:
+
+#### 🔹 Time Complexity
+- **Best Case**: If pivot always lands in the center ⇒ balanced recursive calls ⇒ `n log n`.
+- **Average Case**: Statistically, pivot divides the array fairly evenly ⇒ `n log n`.
+- **Worst Case**: Pivot always lands at one extreme ⇒ one side has n-1 elements ⇒ becomes `n + n-1 + n-2 + ... + 1 = O(n²)`.
+
+#### 🔹 Space Complexity
+- **Quick Sort is in-place**: It uses no additional array (unlike Merge Sort).
+- Stack usage depends on **depth of recursion**:
+  - **Balanced** partition ⇒ **O(log n)**
+  - **Unbalanced** (worst case) ⇒ **O(n)**
+
+---

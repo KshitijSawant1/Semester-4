@@ -148,3 +148,49 @@ Q -  -  -
 - Uses a **list of column positions (`board`)** instead of a full matrix.
 - Checks **three directions**: vertical, diagonal left (`/`), and diagonal right (`\`).
 - Builds and stores each complete solution in a readable format.
+---
+
+### ✅ **N-Queens Backtracking Algorithm – Analysis Table**
+
+| **Aspect**            | **Complexity**                | **Reason / Explanation**                                                                 |
+|------------------------|-------------------------------|--------------------------------------------------------------------------------------------|
+| **Best Case**           | **O(N!)**                    | Even best case requires exploring a significant part of the solution space due to constraints. |
+| **Average Case**        | **O(N!)**                    | Average complexity remains factorial as most configurations are checked recursively.         |
+| **Worst Case**          | **O(N!)**                    | In worst case, all possible queen placements are tried (i.e., all permutations).             |
+| **Space Complexity**    | **O(N)**                     | Stack space due to recursive calls and storage of board state (e.g., column positions).      |
+
+---
+
+### 🔍 Explanation
+
+#### 🔹 Time Complexity – O(N!)
+
+- The problem explores all **permutations of queen placements** row by row.
+- For row 1: N choices  
+  For row 2: N−1 choices (excluding attacked columns)  
+  For row 3: N−2 choices  
+  ...
+- This gives us approximately **N × (N−1) × (N−2) ... = N!** possibilities.
+- Each possibility requires checking for **safe placement**, which is **O(N)** in basic implementations.
+
+> Optimized approaches (bitmasking, pruning) may reduce constant factors, but the asymptotic time remains **O(N!)**.
+
+#### 🔹 Space Complexity – O(N)
+
+- We need:
+  - A list of column positions (or chessboard) → **O(N)**
+  - Recursive call stack of depth N → **O(N)**
+- No additional data structures are used beyond simple arrays/lists.
+
+---
+
+### ✅ Summary Table
+
+| **Metric**         | **Complexity**   | **Explanation**                                                                         |
+|--------------------|------------------|------------------------------------------------------------------------------------------|
+| **Time (Best)**     | O(N!)           | Even in the best case, N! configurations must be considered before reaching a solution. |
+| **Time (Average)**  | O(N!)           | Most branches are explored before backtracking.                                         |
+| **Time (Worst)**    | O(N!)           | All possible placements are tried, including backtracking all the way.                  |
+| **Space**           | O(N)            | Stack depth and current board configuration for N rows.                                |
+
+---
