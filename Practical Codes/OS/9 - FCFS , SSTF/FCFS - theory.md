@@ -1,5 +1,3 @@
----
-
 ### 🔍 Code Breakdown:
 
 ```python
@@ -84,14 +82,6 @@ def fcfs(requests, head):
 ```
 
 - Displays the **total number of head movements** required to service all requests.
-
----
-
-```python
-    print(f"Average Seek Time: {seek / len(requests):.2f}")
-```
-
-- Calculates and prints the **average seek time** per request, formatted to 2 decimal places.
 
 ---
 

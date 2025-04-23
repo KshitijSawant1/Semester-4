@@ -1,5 +1,3 @@
----
-
 ### 🔧 **Imports**
 ```python
 import threading
@@ -10,7 +8,7 @@ import time
 
 ---
 
-### 🍴 **Setup: Chopsticks and Philosophers**
+### **Setup: Chopsticks and Philosophers**
 ```python
 n = 5  # Number of philosophers
 chopsticks = [threading.Semaphore(1) for _ in range(n)]
@@ -20,7 +18,7 @@ chopsticks = [threading.Semaphore(1) for _ in range(n)]
 
 ---
 
-### 🧠🍽 **Philosopher Function**
+### **Philosopher Function**
 ```python
 def philosopher(i):
     while True:
@@ -64,7 +62,7 @@ def philosopher(i):
 
 ---
 
-### 🧵 **Creating Threads for Each Philosopher**
+### **Creating Threads for Each Philosopher**
 ```python
 threads = [threading.Thread(target=philosopher, args=(i,)) for i in range(n)]
 ```
@@ -73,7 +71,7 @@ threads = [threading.Thread(target=philosopher, args=(i,)) for i in range(n)]
 
 ---
 
-### ▶️ **Start All Threads**
+###  **Start All Threads**
 ```python
 for t in threads:
     t.start()

@@ -1,5 +1,3 @@
----
-
 ### ✅ **Function Definition and Inputs**
 ```python
 def banker(allocated, maximum, available):

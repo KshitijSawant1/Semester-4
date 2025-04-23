@@ -24,8 +24,8 @@ def rr(at, bt, q):
     for i in range(n):
         print(f"P{i+1} \t {at[i]} \t {bt[i]} \t {wt[i]} \t {tat[i]}")
     
-    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n:.2f}")
-    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n:.2f}")
+    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n}")
+    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n}")
 
 
 # rr([0, 1, 2], [5, 3, 6], 2)

@@ -27,8 +27,8 @@ def sjf(at, bt):
     for i in range(n):
         print(f"P{i+1} \t {at[i]} \t {bt[i]} \t {wt[i]} \t {tat[i]}")
     
-    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n:.2f}")
-    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n:.2f}")
+    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n}")
+    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n}")
 
 # Example usage
 sjf([0, 2, 4, 6], [8, 4, 2, 1])

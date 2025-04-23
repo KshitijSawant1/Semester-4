@@ -1,5 +1,3 @@
----
-
 ```python
 def sjf(at, bt):
 ```

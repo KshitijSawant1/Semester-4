@@ -19,15 +19,15 @@ def lru(pages, capacity):
         print(f"Page: {page} | Memory: {memory}")
 
     total_requests = len(pages)
-    fault_ratio = page_faults / total_requests
-    hit_ratio = page_hits / total_requests
+    fault_ratio = (page_faults / total_requests)*100
+    hit_ratio = (page_hits / total_requests)*100
 
     print("\nSummary:")
     print(f"Total Page Requests: {total_requests}")
     print(f"Total Page Faults  : {page_faults}")
     print(f"Total Page Hits    : {page_hits}")
-    print(f"Page Fault Ratio   : {fault_ratio:.2f}")
-    print(f"Page Hit Ratio     : {hit_ratio:.2f}")
+    print(f"Page Fault Ratio   : {fault_ratio}")
+    print(f"Page Hit Ratio     : {hit_ratio}")
 
 # Example usage
 pages = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]

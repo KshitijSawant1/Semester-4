@@ -1,5 +1,3 @@
----
-
 ### 🧠 Function Definition
 ```python
 def rr(at, bt, q):

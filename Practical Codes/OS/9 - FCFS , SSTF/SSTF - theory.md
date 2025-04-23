@@ -1,5 +1,3 @@
----
-
 ### ✅ Code Breakdown:
 
 ```python
@@ -71,11 +69,10 @@ def sstf(requests, head):
     print("\n--- SSTF Disk Scheduling ---")
     print("Seek Sequence:", ' -> '.join(map(str, sequence)))
     print("Total Seek Time:", seek)
-    print(f"Average Seek Time: {seek / len(requests):.2f}")
 ```
 - Final Output:
   - Shows the **order** in which requests were handled.
-  - Displays **total seek time** and **average seek time per request**.
+  - Displays **total seek time** 
 
 ---
 
