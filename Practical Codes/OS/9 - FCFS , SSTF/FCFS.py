@@ -1,16 +1,18 @@
-def fcfs(requests, head):
-    seek = 0
+def fcfs (request,head):
+    seek = 0 
     sequence = []
-
-    for r in requests:
-        distance = abs(head - r)
-        seek += distance
+    
+    for r in request :
+        distance += abs(head-r)
+        seek += distance 
         sequence.append(r)
-        head = r
-
-    print("\n--- FCFS Disk Scheduling ---")
-    print("Seek Sequence:", ' -> '.join(map(str, sequence)))
-    print("Total Seek Time:", seek)
-
-# 🔹 Example
-fcfs([82, 170, 43, 140, 24, 16, 190], head=50)
+        head=r
+        
+    print(f"FSFC Disk Scheduling")
+    print(f"Head : {head}")
+    print(f"Seek Sequence : ",'->'.join(map(str,sequence)))
+    print(f"Total Seek Time : {seek}")
+    
+request = [19,28,37,46,55,64,73,82,91]
+head = 50
+fcfs(request,head)

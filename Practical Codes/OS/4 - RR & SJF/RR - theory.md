@@ -102,8 +102,8 @@ def rr(at, bt, q):
 
 ### 📈 Show Totals and Averages
 ```python
-    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n:.2f}")
-    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n:.2f}")
+    print(f"\nTotal WT = {total_wt}, Average WT = {(total_wt/n)}")
+    print(f"Total TAT = {total_tat}, Average TAT = {(total_tat/n)}")
 ```
 - Show:
   - Total and Average Waiting Time

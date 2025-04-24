@@ -14,13 +14,13 @@ def philosopher(i):
         left.acquire()
         right.acquire()
 
-        print(f"Philosopher {i} is eating")
+        print(f"Philosopher {i} is eating\n")
         time.sleep(2)
 
         left.release()
         right.release()
 
-        print(f"Philosopher {i} finished eating")
+        print(f"Philosopher {i} finished eating\n")
 
 threads = [threading.Thread(target=philosopher, args=(i,)) for i in range(n)]
 

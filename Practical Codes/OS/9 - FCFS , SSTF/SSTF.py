@@ -21,6 +21,7 @@ def sstf(requests, head):
     print("\n--- SSTF Disk Scheduling ---")
     print("Seek Sequence:", ' -> '.join(map(str, sequence)))
     print("Total Seek Time:", seek)
-
-# 🔹 Example
-sstf([82, 170, 43, 140, 24, 16, 190], head=50)
+  
+req = [19,28,37,46,55,64,73,82,91]
+head = 50 
+sstf(req,head)

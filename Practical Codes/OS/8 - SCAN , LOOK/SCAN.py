@@ -26,4 +26,8 @@ def scan(requests, head, direction, disk_size):
     print("Total Seek Time:", seek)
 
 
-scan([82, 170, 43, 140, 24, 16, 190], head=50, direction="right", disk_size=200)
+req = [19,28,37,46,55,64,73,82,91]
+head = 50 
+direction = "right"
+DS = 100
+scan(req,head,direction,DS)

@@ -1,166 +1,133 @@
+### ✅ **Code Explanation (Line-by-Line)**
+
 ```python
 def sjf(at, bt):
 ```
-🧠 **Defines a function `sjf`** that takes:
-- `at`: a list of **arrival times** for each process.
-- `bt`: a list of **burst times** (how long each process needs on CPU).
+- This is the main function.
+- `at` = list of Arrival Times.
+- `bt` = list of Burst Times.
 
 ---
 
 ```python
     n = len(at)
 ```
-🧮 **Calculates the number of processes** (`n`) based on how many arrival times are given.
-
----
-
+- Number of processes.
+  
 ```python
-    processes = list(range(n))
+    done = [0]*n
 ```
-🧾 **Creates a list of process indices**, like `[0, 1, 2, ..., n-1]`, to keep track of process IDs.
-
----
-
-```python
-    completed = [False]*n
-```
-✅ A list to **track which processes are completed**. Initially, all set to `False`.
-
----
+- Keeps track of whether each process has completed (`0 = not done`, `1 = done`).
 
 ```python
     t = 0
 ```
-⏲️ `t` is the **current system time**. It keeps increasing as processes execute.
-
----
+- The current time in the simulation (CPU clock).
 
 ```python
     wt, tat, st = [0]*n, [0]*n, [0]*n
 ```
-📊 Initialize:
-- `wt`: Waiting Time
-- `tat`: Turnaround Time
-- `st`: Start Time  
-All initialized to 0 for every process.
+- `wt` = Waiting Time  
+- `tat` = Turnaround Time  
+- `st` = Start Time for each process
 
 ---
 
 ```python
-    while not all(completed):
+    while sum(done)<n:
 ```
-🔁 **Main loop**: Runs **until all processes are marked as completed**.
-
----
+- Loop until all processes are completed.
 
 ```python
         idx = -1
         min_bt = float('inf')
 ```
-📍 Temporary variables:
-- `idx`: will store the **index of the selected process**.
-- `min_bt`: to store the **smallest burst time found**.
-
----
+- `idx`: to store the index of the next process to schedule.
+- `min_bt`: stores the shortest burst time among ready (arrived) processes.
 
 ```python
         for i in range(n):
-            if at[i] <= t and not completed[i] and bt[i] < min_bt:
+            if at[i] <= t and not done[i] and bt[i] < min_bt:
                 min_bt = bt[i]
                 idx = i
 ```
-🔍 **Finds the next process to execute**:
-- Must have **already arrived** (`at[i] <= t`).
-- Must be **not completed**.
-- Must have the **smallest burst time** among eligible ones.
-
----
+- Finds the next process with the **shortest burst time** that has **already arrived** and is **not yet completed**.
 
 ```python
         if idx == -1:
             t += 1
             continue
 ```
-⌛ If **no process has arrived** yet (`idx == -1`), just **wait** by incrementing `t` and **retry**.
+- If no process is ready at current time `t`, increment time and check again.
 
 ---
+
+### ✅ If a process is selected
 
 ```python
         st[idx] = t
 ```
-🕓 **Start Time** of selected process is the current time.
-
----
+- Records the **start time** of the process.
 
 ```python
-        wt[idx] = t - at[idx]
+        wt[idx] = st[idx] - at[idx]
 ```
-🧾 **Waiting Time** is: Start Time – Arrival Time.
-
----
+- Calculates **waiting time**:  
+  Start Time − Arrival Time
 
 ```python
         t += bt[idx]
 ```
-🚀 Advance the time by the **burst time** of the process (it runs to completion).
-
----
+- Move time forward by that process's burst time.
 
 ```python
         tat[idx] = t - at[idx]
 ```
-📈 **Turnaround Time** is: Completion Time – Arrival Time.
-
----
+- Turnaround Time = Finish Time − Arrival Time
 
 ```python
-        completed[idx] = True
+        done[idx] = 1
 ```
-✅ Mark the selected process as **completed**.
+- Mark this process as completed.
 
 ---
+
+### ✅ Summary and Output
 
 ```python
     total_wt = sum(wt)
     total_tat = sum(tat)
 ```
-📊 Compute **total waiting time** and **total turnaround time**.
-
----
+- Total waiting time and total turnaround time (for average).
 
 ```python
-    print("Process\tAT\tBT\tWT\tTAT")
+    print("Process\tAT\tBT\tST\tWT\tTAT")
     for i in range(n):
-        print(f"P{i+1} \t {at[i]} \t {bt[i]} \t {wt[i]} \t {tat[i]}")
+        print(f"P{i+1} \t {at[i]} \t {bt[i]} \t {st[i]} \t {wt[i]} \t {tat[i]}")
 ```
-🖨️ Print a table of:
-- Process ID
-- Arrival Time
-- Burst Time
-- Waiting Time
-- Turnaround Time
-
----
+- Prints per-process details in tabular format:
+  - Arrival Time, Burst Time, Start Time, Waiting Time, Turnaround Time.
 
 ```python
-    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n:.2f}")
-    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n:.2f}")
+    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n}")
+    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n}")
 ```
-📉 Display **total** and **average** Waiting Time and Turnaround Time.
+- Final summary: total and average waiting/turnaround time.
 
 ---
 
-### 📌 Example Input
+### 🧪 Example Usage:
+
 ```python
 sjf([0, 2, 4, 6], [8, 4, 2, 1])
 ```
 
-This means:
-- `P1`: arrives at 0, needs 8 units
-- `P2`: arrives at 2, needs 4 units
-- `P3`: arrives at 4, needs 2 units
-- `P4`: arrives at 6, needs 1 unit
+- Four processes:
+  - P1: AT=0, BT=8
+  - P2: AT=2, BT=4
+  - P3: AT=4, BT=2
+  - P4: AT=6, BT=1
 
-They’ll be picked **based on shortest burst time** *among the arrived processes*.
+The CPU picks shortest jobs first *among arrived ones*.
 
 ---

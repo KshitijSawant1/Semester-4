@@ -19,14 +19,19 @@ def rr(at, bt, q):
 
     total_wt = sum(wt)
     total_tat = sum(tat)
-    
-    print("Process\tAT\tBT\tWT\tTAT")
-    for i in range(n):
+    print("RR Scheduling ")
+    print(f"Process \t AT \t BT \t WT \t TAT")
+    for i in range (n):
         print(f"P{i+1} \t {at[i]} \t {bt[i]} \t {wt[i]} \t {tat[i]}")
-    
-    print(f"\nTotal WT = {total_wt}, Average WT = {total_wt/n}")
-    print(f"Total TAT = {total_tat}, Average TAT = {total_tat/n}")
-
+        
+    print(f"Total Wating Time : {total_wt}")
+    print(f"Average Wating Time : {total_wt/n}")
+    print(f"Total Turn Around Time : {total_tat}")
+    print(f"Average Turn Around Time : {total_tat/n}")
 
 # rr([0, 1, 2], [5, 3, 6], 2)
-rr([0, 1, 2,3], [3, 1, 5,4], 2)
+#rr([0, 1, 2,3], [3, 1, 5,4], 2)
+at = [0,1,2,3]
+bt = [4,5,6,7]
+q = 2
+rr(at,bt,q)
